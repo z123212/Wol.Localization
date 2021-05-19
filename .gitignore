@@ -1,0 +1,9 @@
+#ºöÂÔ¼ş¼Ğ
+.vs
+packages
+*.suo
+TestResults
+bin
+obj
+*.user
+*.xsd
