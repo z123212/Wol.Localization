@@ -136,7 +136,6 @@ namespace Wol.Localization.Injections
                 var tmpText = __instance.text;
                 char[] array = tmpText.ToCharArray();
                 //Debug.LogError("=================================================");
-                Debug.LogError(str);
                 ////用于做测试，随后需要删除掉
                 //Log.WriteGameLog($"当前文本：{__instance.text}\nTracking:{Log.GetStackTraceModelName()}\n===================\n");
 
@@ -432,56 +431,7 @@ namespace Wol.Localization.Injections
 
             // return codes;
 
-        }
-
-        /*
-                static void PopulateMeshInner(VertexHelper toFill)
-                {
-
-                    Vector2 extents = rectTransform.rect.size;
-                    var settings = GetGenerationSettings(extents);
-                    cachedTextGenerator.Populate(text, settings);
-                    Rect inputRect = rectTransform.rect;
-                    // get the text alignment anchor point for the text in local space  
-                    Vector2 textAnchorPivot = GetTextAnchorPivot(m_FontData.alignment);
-                    Vector2 refPoint = Vector2.zero;
-                    refPoint.x = (textAnchorPivot.x == 1 ? inputRect.xMax : inputRect.xMin);
-                    refPoint.y = (textAnchorPivot.y == 0 ? inputRect.yMin : inputRect.yMax);
-                    // Determine fraction of pixel to offset text mesh.  
-                    Vector2 roundingOffset = PixelAdjustPoint(refPoint) - refPoint;
-                    // Apply the offset to the vertices  
-                    IList<UIVertex> verts = cachedTextGenerator.verts;
-                    float unitsPerPixel = 1 / pixelsPerUnit;
-                    //Last 4 verts are always a new line...  
-                    int vertCount = verts.Count - 4;
-                    toFill.Clear();
-                    if (roundingOffset != Vector2.zero)
-                    {
-                        for (int i = 0; i < vertCount; ++i)
-                        {
-                            int tempVertsIndex = i & 3;
-                            m_TempVerts[tempVertsIndex] = verts[i];
-                            m_TempVerts[tempVertsIndex].position *= unitsPerPixel;
-                            m_TempVerts[tempVertsIndex].position.x += roundingOffset.x;
-                            m_TempVerts[tempVertsIndex].position.y += roundingOffset.y;
-                            if (tempVertsIndex == 3)
-                                toFill.AddUIVertexQuad(m_TempVerts);
-                        }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < vertCount; ++i)
-                        {
-                            int tempVertsIndex = i & 3;
-                            m_TempVerts[tempVertsIndex] = verts[i];
-                            m_TempVerts[tempVertsIndex].position *= unitsPerPixel;
-                            if (tempVertsIndex == 3)
-                                toFill.AddUIVertexQuad(m_TempVerts);
-                        }
-                    }
-                    m_DisableFontTextureRebuiltCallback = false;
-                }
-        */
+        } 
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(WolText), "AppendLinkRect", new[] { typeof(UIVertex[]) })]

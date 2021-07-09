@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Wol.Localization.ConfigUI;
 using Wol.Localization.Injections;
 
 namespace Wol.Localization
@@ -44,14 +45,22 @@ namespace Wol.Localization
             //Debug.Log("这里是Start()方法中的内容!");
         }
 
+        BepInEx.Configuration.KeyboardShortcut key = new BepInEx.Configuration.KeyboardShortcut(KeyCode.F9);
+        BepInEx.Configuration.KeyboardShortcut ConfigUiKey = new BepInEx.Configuration.KeyboardShortcut(KeyCode.F10);
         // 插件启动后会一直循环执行Update()方法，可用于监听事件或判断键盘按键，执行顺序在Start()后面
         void Update()
         {
-            var key = new BepInEx.Configuration.KeyboardShortcut(KeyCode.F9);
 
             if (key.IsDown())
             {
                 Localization.Reload();
+                Debug.Log("汉化词条重新加载完毕");
+            }
+            if (ConfigUiKey.IsDown())
+            {
+                Debug.Log("F10 按下");
+                //switchConfigUI.Show();
+                switchConfigUI.IsShow = !switchConfigUI.IsShow;
             }
         }
         // 在插件关闭时会调用OnDestroy()方法
@@ -64,6 +73,11 @@ namespace Wol.Localization
         {
 
 
+        }
+        private SwitchConfigUI switchConfigUI = new SwitchConfigUI();
+        void OnGUI()
+        {
+            switchConfigUI.Show();
         }
     }
 }

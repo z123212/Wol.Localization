@@ -73,6 +73,9 @@
       <HintPath>..\libs\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\libs\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>..\libs\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
@@ -84,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonExtensions.cs" />
+    <Compile Include="ConfigUI\SwitchConfigUI.cs" />
     <Compile Include="Injections\CharacterSheetFixPatch.cs" />
     <Compile Include="Injections\CombatActionButtonFixPatch.cs" />
     <Compile Include="Injections\CombatManagerFixPatch.cs" />
@@ -141,6 +145,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "G:/SteamLibrary/steamapps/common/West of Loathing/BepInEx/plugins/WolLocalization/"</PostBuildEvent>
